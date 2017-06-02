@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   #get 'admin', to: 'admin#index'
   resources :admin, :only => [:index]
-  resources :user, :only => [:show]
+  resources :user
+  # , :only => [:show]
 end
