@@ -2,10 +2,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  # before_action :authenticate_admin!, only: :new
+
   # GET /resource/sign_up
-  # def new
+  def new
+    redirect_to root_path
   #   super
-  # end
+  #   if admin_signed_in?
+  #     x = 1
+  #   else
+  #     redirect_to root_path
+  #   end
+  end
 
   # POST /resource
   # def create
