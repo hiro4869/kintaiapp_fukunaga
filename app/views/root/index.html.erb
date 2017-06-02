@@ -12,4 +12,11 @@
   <% end %>
 </div>
 
-<a><%= link_to "ユーザーログイン", new_user_session_path %>
+<div>
+  <% if user_signed_in? %>
+    <p>ユーザーログイン中</p>
+    <p><%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <a><%= link_to "ユーザーログイン", new_user_session_path %></a>
+  <% end %>
+</div>
