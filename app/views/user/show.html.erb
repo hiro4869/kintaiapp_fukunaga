@@ -2,4 +2,6 @@
 
 <p><%= @user.email %>さんのマイページ</p>
 
-<%= link_to "Home", root_path %>
+<p><%= link_to "ユーザ情報編集ページ", edit_user_path(@user) %></p>
+
+<p><%= link_to "Home", root_path %></p>

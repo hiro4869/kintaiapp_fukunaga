@@ -1,8 +1,8 @@
 class UserController < ApplicationController
   before_action :authenticate_admin!, only: :new
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -14,9 +14,22 @@ class UserController < ApplicationController
       if @user.save
         redirect_to root_path
       else
-      render '/user/new'
+        render '/user/new'
       end
   end
+
+  def edit
+  end
+
+  def update
+      if @user.update(user_params)
+        redirect_to root_path
+      else
+        @error = "全ての項目を記入してください。"
+        render '/user/edit'
+      end
+  end
+
 
   private
     def set_user
@@ -24,7 +37,7 @@ class UserController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:email, :password, :name, :birth, :sex, :status, :address, :phone)
     end
 
 end
