@@ -38,7 +38,7 @@ class UserController < ApplicationController
       if @user.update(user_params)
         redirect_to root_path
       else
-        render '/user/show'
+        render '/user/pass_change'
       end
   end
 
