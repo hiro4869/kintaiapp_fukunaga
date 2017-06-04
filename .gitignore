@@ -19,3 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+
+#メーラーの情報を無視
+/config/environments/development.rb
+
+

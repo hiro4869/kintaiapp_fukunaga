@@ -10,6 +10,7 @@ class UserController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
     if @user.save
      #管理ユーザーにメールを送信
      adminuser = @adminuser
