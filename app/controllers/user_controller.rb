@@ -10,12 +10,18 @@ class UserController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-      if @user.save
-        redirect_to root_path
-      else
-        render '/user/new'
-      end
+    if @user.save
+     #管理ユーザーにメールを送信
+     adminuser = @adminuser
+     RegistrationMailer.registration_email(adminuser, @user).deliver
+
+     #ユーザーにメールを送る
+       user_email = @user.email
+       RegistrationMailer.registration_email(user_email, @user).deliver
+       redirect_to root_path
+     else
+       render '/user/new'
+     end
   end
 
   def edit

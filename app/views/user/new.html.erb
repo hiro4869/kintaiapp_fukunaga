@@ -1,6 +1,7 @@
 <h1>ユーザー作成</h1>
 
 <%= form_for @user, url: '/user' do |f| %>
+<p>氏名：<%= f.text_field :name %></p>
 <p>email：<%= f.text_field :email %></p>
 <p>pass：<%= f.password_field :password %></p>
 <p>pass(再)<%= f.password_field :password_confirmation %></p>
