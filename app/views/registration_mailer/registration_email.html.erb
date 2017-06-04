@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <p><%= @registration.name %>さん勤怠管理システムへようこそ。</p>
+    <p>以下のメールアドレス・パスワードを使ってログインしてください。</p>
+    <p>メールアドレス：<%= @registration.email %></p>
+    <p>パスワード：<%= @registration.password %></p>
+    <p>ログインURL: http://localhost:3000/users/sign_in</p>
+    <p>なお、ログイン後は必ずパスワードを変更するようにしてください。</p>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<h1>ユーザー情報編集ページ</h1>
+
+<%= form_for @user do |f| %>
+<p>氏名：<%= f.text_field :name %></p>
+<p>性別：
+  <label><%= f.radio_button :sex, "男" %>男</label>
+  <label><%= f.radio_button :sex, "女" %>女</label>
+  <label><%= f.radio_button :sex, "LGBT" %>LGBT</label>
+</p>
+<p>生年月日<%= f.text_field :birth %></p>
+<p>住所<%= f.text_field :address %></p>
+<p>電話番号<%= f.text_field :phone %></p>
+<p>メール：<%= f.text_field :email %></p>
+<p>雇用形態:
+  <label><%= f.radio_button :status, "正社員" %>正社員</label>
+  <label><%= f.radio_button :status, "契約社員" %>契約社員</label>
+  <label><%= f.radio_button :status, "アルバイト" %>アルバイト</label>
+  <label><%= f.radio_button :status, "その他" %>その他</label>
+</p>
+
+<p><%= f.submit "更新" %></p>
+<% end %>
+
+<h2><%= @error unless @error.nil? %></h2>
+
+<%= link_to "マイページへ", user_path %>
+
