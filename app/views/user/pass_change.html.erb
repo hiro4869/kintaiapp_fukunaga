@@ -1,0 +1,10 @@
+<h1>pass_change</h1>
+
+<%= form_for @user do |f| %>
+<p>パス：<%= f.text_field :password %></p>
+<p>パス(再)：<%= f.text_field :password_confirmation %></p>
+<p><%= f.submit "更新" %></p>
+<% end %>
+
+
+<%= link_to "マイページへ", user_path %>

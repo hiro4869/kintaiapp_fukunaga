@@ -7,12 +7,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     redirect_to root_path
-  #   super
-  #   if admin_signed_in?
-  #     x = 1
-  #   else
-  #     redirect_to root_path
-  #   end
+    # if admin_signed_in?
+    #   x = 1
+    # else
+    #   redirect_to root_path
+    #   return
+    # end
+    # super
   end
 
   # POST /resource

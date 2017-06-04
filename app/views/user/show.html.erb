@@ -3,5 +3,8 @@
 <p><%= @user.email %>さんのマイページ</p>
 
 <p><%= link_to "ユーザ情報編集ページ", edit_user_path(@user) %></p>
+<p><%= link_to "パスワード変更", "/user/#{@user.id}/pass_change" %></p>
+
+<h2>現在時刻:<%= Time.now %></2>
 
 <p><%= link_to "Home", root_path %></p>

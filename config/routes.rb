@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   #get 'admin', to: 'admin#index'
   resources :admin, :only => [:index]
-  resources :user
-  # , :only => [:show]
+  resources :user # , :only => [:show]
+  get 'user/:id/pass_change', to: 'user#pass_change'
+  put 'user/:id/pass_change', to: 'user#pass_update'
+  patch 'user/:id/pass_change', to: 'user#pass_update'
+
 end

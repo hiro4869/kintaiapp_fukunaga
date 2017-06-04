@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   before_action :authenticate_admin!, only: :new
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :pass_change, :pass_update]
 
   def show
   end
@@ -22,6 +22,7 @@ class UserController < ApplicationController
   end
 
   def update
+      @user.name = Time.now
       if @user.update(user_params)
         redirect_to root_path
       else
@@ -30,6 +31,16 @@ class UserController < ApplicationController
       end
   end
 
+  def pass_change
+  end
+
+  def pass_update
+      if @user.update(user_params)
+        redirect_to root_path
+      else
+        render '/user/show'
+      end
+  end
 
   private
     def set_user
@@ -37,7 +48,7 @@ class UserController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :name, :birth, :sex, :status, :address, :phone)
+      params.require(:user).permit(:email, :password, :name, :birth, :sex, :status, :address, :phone, :password_confirmation)
     end
 
 end
