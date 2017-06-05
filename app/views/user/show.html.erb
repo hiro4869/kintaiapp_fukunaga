@@ -7,4 +7,18 @@
 
 <h2>現在時刻:<%= Time.now %></2>
 
+<div>
+  <%= form_for @attendance, url: '/attendances' do |f| %>
+    <p><%= f.submit "勤務開始" %></p>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for @attendance, url: "/attendances/#{@user.id}" ,method: :patch do |f| %>
+  <%= f.hidden_field :end, :value => Time.now %>
+    <p><%= f.submit "勤務終了" %></p>
+  <% end %>
+</div>
+
+
 <p><%= link_to "Home", root_path %></p>
