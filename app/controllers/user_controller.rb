@@ -3,6 +3,12 @@ class UserController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :pass_change, :pass_update]
 
   def show
+    @attendance = Attendance.new
+    if Attendance.where(user_id:"#{current_user.id}").exists?
+      @attendance_end = Attendance.where(user_id:"#{current_user.id}").last
+    else
+      @attendance_end = Attendance.new
+    end
   end
 
   def new
@@ -29,7 +35,6 @@ class UserController < ApplicationController
   end
 
   def update
-      @user.name = Time.now
       if @user.update(user_params)
         redirect_to root_path
       else
