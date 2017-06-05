@@ -4,7 +4,11 @@ class UserController < ApplicationController
 
   def show
     @attendance = Attendance.new
-    # @attendance = Attendance.where(user_id:4).last
+    if Attendance.where(user_id:"#{current_user.id}").exists?
+      @attendance_end = Attendance.where(user_id:"#{current_user.id}").last
+    else
+      @attendance_end = Attendance.new
+    end
   end
 
   def new

@@ -7,18 +7,28 @@
 
 <h2>現在時刻:<%= Time.now %></2>
 
-<div>
-  <%= form_for @attendance, url: '/attendances' do |f| %>
-    <p><%= f.submit "勤務開始" %></p>
-  <% end %>
-</div>
 
-<div>
-  <%= form_for @attendance, url: "/attendances/#{@user.id}" ,method: :patch do |f| %>
-  <%= f.hidden_field :end, :value => Time.now %>
-    <p><%= f.submit "勤務終了" %></p>
-  <% end %>
-</div>
-
+<% if @attendance_end.end.nil? && @attendance_end.start.nil? %>
+  <!-- 初出勤の場合 -->
+  <div>
+    <%= form_for @attendance, url: '/attendances',method: :post do |f| %>
+      <p><%= f.submit "勤務開始" %></p>
+    <% end %>
+  </div>
+<% elsif @attendance_end.end.nil? %>
+  <!-- 出勤終了していない -->
+  <div>
+    <%= form_for @attendance_end, url: "/attendances/#{@user.id}" ,method: :patch do |f| %>
+      <p><%= f.submit "勤務終了" %></p>
+    <% end %>
+  </div>
+<% else %>
+  <!-- 出勤開始していない -->
+  <div>
+    <%= form_for @attendance, url: '/attendances',method: :post do |f| %>
+      <p><%= f.submit "勤務開始" %></p>
+    <% end %>
+  </div>
+<% end %>
 
 <p><%= link_to "Home", root_path %></p>

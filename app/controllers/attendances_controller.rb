@@ -12,9 +12,9 @@ class AttendancesController < ApplicationController
   end
 
   def update
-    @attendance = Attendance.where(user_id:"#{current_user.id}").last
-    @attendance.end = Time.now
-    if @attendance.update(attendance_params)
+    # @attendance = Attendance.where(user_id:"#{current_user.id}").last
+    @attendance_end = current_user.attendances.last
+    if @attendance_end.update(end: Time.now)
       redirect_to root_path
     else
       redirect_to root_path
@@ -22,8 +22,6 @@ class AttendancesController < ApplicationController
 
   end
 
-  def attendance_params
-    params.require(:attendance).permit(:user_id, :start ,:end)
-  end
-
 end
+
+
