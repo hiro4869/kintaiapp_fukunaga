@@ -26,7 +26,7 @@ class AttendancesController < ApplicationController
   end
 
   def approval
-    @attendance = Attendance.find(attendance_params[:id])
+    @attendance = Attendance.find(params[:id]) 
     if @attendance.update(attendance_params)
       redirect_to root_path
     else

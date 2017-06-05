@@ -19,9 +19,13 @@ Rails.application.routes.draw do
     collection do
       get :application_new
       post :application_create
+    end
+    member do
       post :approval
     end
   end
+
+
   resources :user do
     #memberを使って自前のアクションを定義
     member do
