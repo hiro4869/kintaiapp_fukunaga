@@ -1,5 +1,9 @@
 class AttendancesController < ApplicationController
 
+  def index
+    @attendances = Attendance.all
+  end
+
   def create
     @attendance = Attendance.new
     @attendance.user_id = current_user.id

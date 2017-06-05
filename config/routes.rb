@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   }
 
   resources :admin, only: [:index]
-  resources :attendances, only: [:create, :update] do
+  resources :attendances, only: [:index, :create, :update] do
     collection do
       get :application_new
       post :application_create

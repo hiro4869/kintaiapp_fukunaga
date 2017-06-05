@@ -1,0 +1,26 @@
+<h1>勤怠情報一覧</h1>
+
+
+
+<table border="1">
+  <tr>
+    <td>ユーザーID</td>
+    <td>氏名</td>
+    <td>勤怠開始時間</td>
+    <td>勤怠終了時間</td>
+    <td>承認</td>
+  </tr>
+  <% @attendances.each do |attendance| %>
+  <tr>
+    <td><%= attendance.user_id %></td>
+    <td><%= attendance.user.name %></td>
+    <td><%= attendance.start %></td>
+    <td><%= attendance.end %></td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>
+
+
+<p><%= link_to "管理者ページへ", admin_index_path %></p>
+
