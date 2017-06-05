@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     collection do
       get :application_new
       post :application_create
+      post :approval
     end
   end
   resources :user do

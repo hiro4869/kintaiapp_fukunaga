@@ -25,6 +25,14 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def approval
+    @attendance = Attendance.find(attendance_params[:id])
+    if @attendance.update(approval: true)
+      redirect_to root_path
+    else
+      redirect_to
+    end
+  end
 
   def application_new
     @attendance = Attendance.new    
@@ -43,10 +51,8 @@ class AttendancesController < ApplicationController
 
   private
     def attendance_params
-      params.require(:attendance).permit(:start, :end)
+      params.require(:attendance).permit(:id,:start, :end)
     end
-
-
 
 end
 
