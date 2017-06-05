@@ -1,0 +1,6 @@
+<div id="approval_false">
+  <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval" ,method: :post do |f| %>
+    <%= f.hidden_field :approval, :value => true %>
+    <p><%= f.submit "承認" %></p>
+  <% end %>    
+</div>

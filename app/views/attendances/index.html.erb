@@ -18,15 +18,19 @@
     <td><%= attendance.end %></td>
     <td>
       <% if attendance.approval %>
-        <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval" ,method: :post do |f| %>
-          <%= f.hidden_field :approval, :value => false %>
-          <p><%= f.submit "承認済み" %></p>
-        <% end %>   
+        <div id="approval_true">
+          <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval_true" ,method: :post do |f| %>
+            <%= f.hidden_field :approval, :value => false %>
+            <p><%= f.submit "承認済み" %></p>
+          <% end %>   
+        </div>
       <% else %>
-        <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval" ,method: :post do |f| %>
-          <%= f.hidden_field :approval, :value => true %>
-          <p><%= f.submit "承認" %></p>
-        <% end %>    
+        <div id="approval_false">
+          <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval_false" ,method: :post do |f| %>
+            <%= f.hidden_field :approval, :value => true %>
+            <p><%= f.submit "承認" %></p>
+          <% end %>    
+        </div>
       <% end %>
     </td>
   </tr>

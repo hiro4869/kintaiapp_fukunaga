@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
     member do
       post :approval
+      post :approval_true
+      post :approval_false
     end
   end
 
