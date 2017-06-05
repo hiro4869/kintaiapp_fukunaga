@@ -5,7 +5,7 @@
 <p><%= link_to "ユーザ情報編集ページ", edit_user_path(@user) %></p>
 <p><%= link_to "パスワード変更", "/user/#{@user.id}/pass_change" %></p>
 
-<h2>現在時刻:<%= Time.now %></2>
+<h2>現在時刻:<%= Time.now %></h2>
 
 
 <% if @attendance_end.end.nil? && @attendance_end.start.nil? %>
@@ -30,5 +30,7 @@
     <% end %>
   </div>
 <% end %>
+
+<p><%= link_to "申請", application_new_attendances_path %></p>
 
 <p><%= link_to "Home", root_path %></p>

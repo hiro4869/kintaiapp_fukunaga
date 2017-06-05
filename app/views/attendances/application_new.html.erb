@@ -1,0 +1,12 @@
+<h1>勤怠申請</h1>
+
+<%= form_for @attendance, url: '/attendances/application_create',method: :post do |f| %>
+<p>勤務開始:<%= f.datetime_select :start %></p>
+<p>勤務終了:<%= f.datetime_select :end %></p>
+  <p><%= f.submit "申請" %></p>
+<% end %>
+
+<h2><%= @error unless @error.nil? %></h2>
+
+
+<%= link_to "マイページ", user_path(current_user.id) %>
