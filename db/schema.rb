@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604132440) do
+ActiveRecord::Schema.define(version: 20170605093612) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20170604132440) do
     t.integer  "user_id"
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "approval",   default: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,10 @@
 class AttendancesController < ApplicationController
 
+  def index
+    # @attendances = Attendance.all
+    @attendances = Attendance.page(params[:page])
+  end
+
   def create
     @attendance = Attendance.new
     @attendance.user_id = current_user.id
@@ -21,6 +26,26 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def approval
+    @attendance = Attendance.find(params[:id]) 
+    if @attendance.update(attendance_params)
+      redirect_to root_path
+    else
+      redirect_to
+    end
+  end
+
+  def approval_true
+    @attendance = Attendance.find(params[:id]) 
+    @attendance.update(attendance_params)
+      # redirect_to root_path
+  end
+
+  def approval_false
+    @attendance = Attendance.find(params[:id]) 
+    @attendance.update(attendance_params)
+      # redirect_to root_path
+  end
 
   def application_new
     @attendance = Attendance.new    
@@ -39,10 +64,8 @@ class AttendancesController < ApplicationController
 
   private
     def attendance_params
-      params.require(:attendance).permit(:start, :end)
+      params.require(:attendance).permit(:id,:start, :end, :approval)
     end
-
-
 
 end
 

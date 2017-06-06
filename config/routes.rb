@@ -15,12 +15,19 @@ Rails.application.routes.draw do
   }
 
   resources :admin, only: [:index]
-  resources :attendances, only: [:create, :update] do
+  resources :attendances, only: [:index, :create, :update] do
     collection do
       get :application_new
       post :application_create
     end
+    member do
+      post :approval
+      post :approval_true
+      post :approval_false
+    end
   end
+
+
   resources :user do
     #memberを使って自前のアクションを定義
     member do
