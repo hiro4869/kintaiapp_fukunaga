@@ -18,14 +18,14 @@
     <td><%= attendance.end %></td>
     <td>
       <% if attendance.approval %>
-        <div id="approval_true">
+        <div id="approval_true_<%= attendance.id %>">
           <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval_true", remote: true ,method: :post do |f| %>
             <%= f.hidden_field :approval, :value => false %>
             <p><%= f.submit "承認済み" %></p>
           <% end %>   
         </div>
       <% else %>
-        <div id="approval_false">
+        <div id="approval_false_<%= attendance.id %>">
           <%= form_for attendance ,url: "/attendances/#{attendance.id}/approval_false", remote: true ,method: :post do |f| %>
             <%= f.hidden_field :approval, :value => true %>
             <p><%= f.submit "承認" %></p>

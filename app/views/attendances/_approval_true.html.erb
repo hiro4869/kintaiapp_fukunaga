@@ -1,4 +1,4 @@
-<div id="approval_true">
+<div id="approval_true_<%= @attendance.id %>">
   <%= form_for @attendance ,url: "/attendances/#{@attendance.id}/approval_true", remote: true ,method: :post do |f| %>
     <%= f.hidden_field :approval, :value => false %>
     <p><%= f.submit "承認済み" %></p>
