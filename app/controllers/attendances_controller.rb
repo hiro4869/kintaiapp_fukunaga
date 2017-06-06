@@ -1,7 +1,8 @@
 class AttendancesController < ApplicationController
 
   def index
-    @attendances = Attendance.all
+    # @attendances = Attendance.all
+    @attendances = Attendance.page(params[:page])
   end
 
   def create

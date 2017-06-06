@@ -1,4 +1,6 @@
 <h1>勤怠情報一覧</h1>
+<!-- kaminari記述 -->
+<%= page_entries_info @attendances %>
 
 <p><%= link_to "管理者ページへ戻る", admin_index_path %></p>
 <table border="1">
@@ -35,6 +37,9 @@
   </tr>
   <% end %>
 </table>
+
+<!-- kaminari記述 -->
+<%= paginate @attendances %>
 
 
 <p><%= link_to "管理者ページへ戻る", admin_index_path %></p>
